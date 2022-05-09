@@ -76,6 +76,7 @@ public class Main {
 					case 4:
 						break;
 					case 5:
+						getEmployIdToDelete();
 						break;
 					case 6:
 						break;
@@ -188,7 +189,7 @@ public class Main {
 
 
 
-	// create a new Employee and than add to the ArrayList
+		// create a new Employee and than add to the ArrayList //
 	public static boolean CreateEmployee( int id ,String name, String depart, int salary, String email) {
 
 
@@ -236,6 +237,57 @@ public class Main {
 
 
 	}
+
+ 			// update employee
+	public boolean updateEmployee( int id ,String name, String depart, int salary, String email) {
+		Employee newEmployee = new Employee();
+		newEmployee.setId(id);
+		newEmployee.setName(name);
+		newEmployee.setDepartment(depart);
+		newEmployee.setSalary(salary);
+		newEmployee.setEmail(email);
+
+		boolean employees = manager.createEmployee(newEmployee);
+		return employees;
+
+
+
+
+
+	}
+	public static void getInputToUpdateEmployee() {
+		System.out.println("Please enter employee ID ");
+		int id = sc.nextInt();
+
+
+		System.out.println("Please enter employee Department ");
+		String depart = sc.next();
+
+
+		System.out.println("Please enter employee Name ");
+		String name = sc.next();
+
+
+		System.out.println("Please enter employee  Salary ");
+		int salary = sc.nextInt();
+
+
+		System.out.println("Please enter employee Email ");
+		String email = sc.next();
+
+
+
+
+		updateEmployee( id ,name,depart, salary, email);
+
+
+
+
+
+	}
+
+
+			// delete Employee by ID //
 	public  static  boolean deleteEmployeeById(int id) {
 		boolean employee =  manager.deleteEmployee(id);
 
@@ -247,9 +299,20 @@ public class Main {
 		}
 		return employee;
 	}
+	public  static  void getEmployIdToDelete() {
+		try {
+			System.out.println("Please enter employee ID to remove  ");
+			int id  = sc.nextInt();
+			deleteEmployeeById(id);
+
+		}
+		catch (InputMismatchException e) {
+			System.out.println(e);
+		}
+	}
 
 
-
+ 			// get department by ID ///
 	public static void getEmployeeByDepart() {
 
 		try {
