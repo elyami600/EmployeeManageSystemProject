@@ -185,10 +185,6 @@ public class Main {
 
 
 
-
-
-
-
 		// create a new Employee and than add to the ArrayList //
 	public static boolean CreateEmployee( int id ,String name, String depart, int salary, String email) {
 
@@ -201,9 +197,12 @@ public class Main {
 			System.out.println("Please try again");
 			getInputToCreateAnEmployee();
 
+
 		}
+
 		else {
 			System.out.println("Employee successful was created");
+			viewEmployeeByID(id);
 			// add the last index where is the recent employee added
 			// ask to the user if they  like to add another Employeee
 
@@ -239,8 +238,8 @@ public class Main {
 	}
 
  			// update employee
-	public boolean updateEmployee( int id ,String name, String depart, int salary, String email) {
-		Employee newEmployee = new Employee();
+	public static boolean updateEmployee( int id ,String name, String depart, int salary, String email) {
+		Employee newEmployee = new Employee( id ,name,depart, salary, email);
 		newEmployee.setId(id);
 		newEmployee.setName(name);
 		newEmployee.setDepartment(depart);
@@ -289,16 +288,20 @@ public class Main {
 
 			// delete Employee by ID //
 	public  static  boolean deleteEmployeeById(int id) {
+
 		boolean employee =  manager.deleteEmployee(id);
 
+
 		if(employee) {
-			System.out.println("Employee was deleted ");
+			System.out.println("Employee was deleted " );
+			viewEmployeeByID(id);
 		}
 		else {
 			System.out.println("Try again ");
 		}
 		return employee;
 	}
+
 	public  static  void getEmployIdToDelete() {
 		try {
 			System.out.println("Please enter employee ID to remove  ");
@@ -345,6 +348,7 @@ public class Main {
 		}
 
 	}
+
 	public static int readInt() throws InputMismatchException {
 
 		int  value = sc.nextInt();
@@ -352,7 +356,7 @@ public class Main {
 		return value;
 	}
 
-	public static String readString(Scanner sc) throws InputMismatchException {
+	public static String readString() throws InputMismatchException {
 
 		String string = sc.next();
 

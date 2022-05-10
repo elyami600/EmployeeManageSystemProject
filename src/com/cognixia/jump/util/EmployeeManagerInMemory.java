@@ -50,13 +50,19 @@ public class EmployeeManagerInMemory implements EmployeeManager {
 	@Override
 	public boolean deleteEmployee(int id) {
 		// TODO Auto-generated method stub
-//		employeeList.removeIf(e -> e.getId().equals(id));
+		if(id < 1 || id > employeeList.size()) return false;
 
-		for(Employee employee : employeeList) {
-			if(employee.getId() == id) {
+		for(int i = 1; i < employeeList.size(); i++) {
+
+			if( employeeList.get(i).getId() == id){
 				employeeList.remove(id);
+				return true;
 			}
+
+
 		}
+
+
 
 
 		return false;
